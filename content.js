@@ -24,9 +24,7 @@ let loop = setInterval(() => {
     if (document.querySelector('.btn-group-merge > button:first-child') !== null) {
       setFavIcon('/icons/github-merge-ready-favicon.ico');
       clearInterval(loop);
-    }
-
-    if (document.querySelector('.merge-branch-heading').innerHTML === 'Pull request successfully merged and closed') {
+    } else if (document.querySelector('.merge-branch-heading').innerHTML === 'Pull request successfully merged and closed') {
       setFavIcon('/icons/github-pr-merged-favicon.ico');
       clearInterval(loop);
     }
