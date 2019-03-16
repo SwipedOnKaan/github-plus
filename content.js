@@ -1,5 +1,9 @@
-//This is a test commit
+let initLoad = true
 
-let loop = setTimeout(() => {
-  console.log("Looking for 'Merge pull request' button text...");
-}, 5000)
+let checkForAvailablePR = setInterval(() => {
+  if (document.querySelector('.btn-group-merge > button:first-child') !== null) {
+    document.querySelector('link[rel="icon"]').href =
+      chrome.extension.getURL('/icons/github-merge-ready-favicon.ico');
+    clearInterval(checkForAvailablePR);
+  }
+}, initLoad ? 100 : 5000)

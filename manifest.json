@@ -24,5 +24,6 @@
     "matches": ["https://github.com/*"],
     "js": ["content.js"]
   }],
-  "permissions": ["tabs", "storage", "unlimitedStorage"]
+  "permissions": ["tabs", "storage", "unlimitedStorage"],
+  "web_accessible_resources": ["/icons/github-merge-ready-favicon.ico"]
 }
