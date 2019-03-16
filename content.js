@@ -9,7 +9,6 @@ window.onload = function() {
       }, 1000);
     });
   }
-
 }
 
 
@@ -43,7 +42,7 @@ let loop = setInterval(() => {
       document.querySelector('.gh-header-title > .js-issue-title')
         .style.color = '#6f42c1';
     }
-    
+
     if (document.querySelector('.btn-group-merge > button:first-child') !== null) {
       setFavIcon('/icons/github-merge-ready-favicon.ico');
       clearInterval(loop);
