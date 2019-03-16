@@ -1,9 +1,5 @@
 let initLoad = true
 //Test5
-window.onload = function() {
-
-}
-
 
 function setFavIcon(icon) {
   document.querySelector('link[rel="icon"]').href =
@@ -12,7 +8,7 @@ function setFavIcon(icon) {
 
 let loop = setInterval(() => {
   if (window.location.href.includes('/issues/')) {
-    // clearInterval(loop)
+    clearInterval(loop)
 
     document.querySelector('title').innerHTML = `(${
       document.querySelector('.gh-header-number').innerHTML
@@ -31,26 +27,16 @@ let loop = setInterval(() => {
     }
 
   } else if (window.location.href.includes('/pull/')) {
-    // let commitMergeButton = document.querySelector('.js-merge-commit-button');
-    // if (commitMergeButton !== null) {
-    //   commitMergeButton.addEventListener('click', function() {
-    //     setTimeout(() => {
-    //       setFavIcon('/icons/github-pr-merged-favicon.ico');
-    //     }, 1000);
-    //   });
-    // }
-
     if (document.querySelector('.TableObject-item > span').innerHTML.split('</svg>')[1].includes('Merged')) {
       document.querySelector('.gh-header-title > .js-issue-title')
         .style.color = '#6f42c1';
     }
 
-    if (document.querySelector('.btn-group-merge > button:first-child') !== null) {
+    if (document.querySelector('.btn-group-merge > button:first-child').disabled === false) {
       setFavIcon('/icons/github-merge-ready-favicon.ico');
-      // clearInterval(loop);
     } else if (document.querySelector('.merge-branch-heading').innerHTML === 'Pull request successfully merged and closed') {
       setFavIcon('/icons/github-pr-merged-favicon.ico');
-      // clearInterval(loop);
+      clearInterval(loop);
     }
   }
-}, initLoad ? 100 : 5000)
+}, initLoad ? 100 : 2000)
