@@ -1,5 +1,5 @@
 let initLoad = true
-//Test3
+//Test4
 
 document.querySelector('.js-merge-commit-button').addEventListener('click', function() {
   setTimeout(() => {
