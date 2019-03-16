@@ -1,5 +1,5 @@
 let initLoad = true
-//Test4
+//Test5
 window.onload = function() {
   let commitMergeButton = document.querySelector('.js-merge-commit-button');
   if (commitMergeButton !== null) {
