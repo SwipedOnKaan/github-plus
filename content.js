@@ -32,7 +32,7 @@ let loop = setInterval(() => {
         .style.color = '#6f42c1';
     }
 
-    if (document.querySelector('.btn-group-merge > button:first-child').disabled === false) {
+    if (document.querySelector('.btn-group-merge > button:first-child') !== null) {
       setFavIcon('/icons/github-merge-ready-favicon.ico');
     } else if (document.querySelector('.merge-branch-heading').innerHTML === 'Pull request successfully merged and closed') {
       setFavIcon('/icons/github-pr-merged-favicon.ico');
