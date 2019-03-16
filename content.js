@@ -1,5 +1,5 @@
 let initLoad = true
-//Test
+//Test2
 function setFavIcon(icon) {
   document.querySelector('link[rel="icon"]').href =
     chrome.extension.getURL(icon);
