@@ -25,5 +25,9 @@
     "js": ["content.js"]
   }],
   "permissions": ["tabs", "storage", "unlimitedStorage"],
-  "web_accessible_resources": ["/icons/github-merge-ready-favicon.ico"]
+  "web_accessible_resources": [
+    "/icons/github-merge-ready-favicon.ico",
+    "/icons/github-pr-merged-favicon.ico",
+    "/icons/github-issue-closed-favicon.ico"
+  ]
 }

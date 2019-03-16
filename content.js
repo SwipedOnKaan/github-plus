@@ -1,27 +1,34 @@
 let initLoad = true
 
-let loop = setInterval(() => {
-  if (!window.location.href.includes('/pull/')) {
-    clearInterval(loop)
-    console.log('stopped loop, not on a pull request page');
+function setFavIcon(icon) {
+  document.querySelector('link[rel="icon"]').href =
+    chrome.extension.getURL(icon);
+}
 
-    if (window.location.href.includes('/issues/')) {
-      let currentTitle = document.querySelector('title').innerHTML;
-      let ticketNumber = document.querySelector('.gh-header-number').innerHTML;
-      let newTitle = `(${ticketNumber}) ${currentTitle}`;
-      document.querySelector('title').innerHTML = newTitle;
+let loop = setInterval(() => {
+  if (window.location.href.includes('/issues/')) {
+    clearInterval(loop)
+
+    document.querySelector('title').innerHTML = `(${
+      document.querySelector('.gh-header-number').innerHTML
+    }) ${
+      document.querySelector('title').innerHTML
+    }`;
+
+    if (document.querySelector('.TableObject-item > span').innerHTML.split('</svg>')[1].includes('Closed')) {
+      setFavIcon('/icons/github-issue-closed-favicon.ico');
     }
-  } else {
+
+  } else if (window.location.href.includes('/pull/')) {
+
     if (document.querySelector('.btn-group-merge > button:first-child') !== null) {
-      document.querySelector('link[rel="icon"]').href =
-        chrome.extension.getURL('/icons/github-merge-ready-favicon.ico');
+      setFavIcon('/icons/github-merge-ready-favicon.ico');
       clearInterval(loop);
-      console.log('stopped loop, found merge button and setting favicon');
     }
 
     if (document.querySelector('.merge-branch-heading').innerHTML === 'Pull request successfully merged and closed') {
+      setFavIcon('/icons/github-pr-merged-favicon.ico');
       clearInterval(loop);
-      console.log('stopped loop, PR already closed');
     }
   }
 }, initLoad ? 100 : 5000)
