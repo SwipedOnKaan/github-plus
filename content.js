@@ -44,3 +44,13 @@ let loop = setInterval(() => {
     }
   }
 }, initLoad ? 100 : 2000)
+
+
+
+let loop2 = setInterval(() => {
+  let isDisabled = document.querySelector('.btn-group-merge > button:first-child').disabled
+  console.log('isDisabled?: ', isDisabled);
+  if (!isDisabled) {
+    clearInterval(loop2);
+  }
+}, 10)
