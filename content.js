@@ -1,14 +1,7 @@
 let initLoad = true
 //Test5
 window.onload = function() {
-  let commitMergeButton = document.querySelector('.js-merge-commit-button');
-  if (commitMergeButton !== null) {
-    commitMergeButton.addEventListener('click', function() {
-      setTimeout(() => {
-        setFavIcon('/icons/github-pr-merged-favicon.ico');
-      }, 1000);
-    });
-  }
+
 }
 
 
@@ -38,6 +31,15 @@ let loop = setInterval(() => {
     }
 
   } else if (window.location.href.includes('/pull/')) {
+    let commitMergeButton = document.querySelector('.js-merge-commit-button');
+    if (commitMergeButton !== null) {
+      commitMergeButton.addEventListener('click', function() {
+        setTimeout(() => {
+          setFavIcon('/icons/github-pr-merged-favicon.ico');
+        }, 1000);
+      });
+    }
+
     if (document.querySelector('.TableObject-item > span').innerHTML.split('</svg>')[1].includes('Merged')) {
       document.querySelector('.gh-header-title > .js-issue-title')
         .style.color = '#6f42c1';
