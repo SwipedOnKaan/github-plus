@@ -6,6 +6,7 @@ function setFavIcon(icon) {
     chrome.extension.getURL(icon);
 }
 
+
 let loop = setInterval(() => {
   if (window.location.href.includes('/issues/')) {
     clearInterval(loop)
