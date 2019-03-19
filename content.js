@@ -6,6 +6,7 @@ function setFavIcon(icon) {
     chrome.extension.getURL(icon);
 }
 
+
 let loop = setInterval(() => {
   if (window.location.href.includes('/issues/')) {
     clearInterval(loop)
@@ -32,7 +33,7 @@ let loop = setInterval(() => {
         .style.color = '#6f42c1';
     }
 
-    if (document.querySelector('.btn-group-merge > button:first-child') !== null) {
+    if (!document.querySelector('.mergeability-details > .branch-action-item:nth-child(3) > .status-heading').innerHTML.includes('Merging is blocked')) {
       setFavIcon('/icons/github-merge-ready-favicon.ico');
     } else if (document.querySelector('.merge-branch-heading').innerHTML === 'Pull request successfully merged and closed') {
       setFavIcon('/icons/github-pr-merged-favicon.ico');
