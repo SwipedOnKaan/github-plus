@@ -33,7 +33,7 @@ let loop = setInterval(() => {
         .style.color = '#6f42c1';
     }
 
-    if (!document.querySelector('.mergeability-details > .branch-action-item:nth-child(3) > .status-heading').innerHTML.includes('Merging is blocked')) {
+    if (!document.querySelector('.mergeability-details > .merge-message > .select-menu > .btn-group-merge > button').disabled) {
       setFavIcon('/icons/github-merge-ready-favicon.ico');
     } else if (document.querySelector('.merge-branch-heading').innerHTML === 'Pull request successfully merged and closed') {
       setFavIcon('/icons/github-pr-merged-favicon.ico');
