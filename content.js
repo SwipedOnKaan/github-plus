@@ -6,6 +6,25 @@ function setFavIcon(icon) {
     chrome.extension.getURL(icon);
 }
 
+window.onload = function() {
+  document.addEventListener('click',function(e) {
+    if (e.target && e.target.classList[0] === 'ellipsis-expander') {
+      let parentElement = e.target.parentNode.parentNode.childNodes[1];
+
+      if (parentElement.getAttribute('commit-message-partial') === null) {
+        parentElement.setAttribute('commit-message-partial', parentElement.childNodes[3].innerHTML);
+      }
+
+      if (parentElement.getAttribute('commit-message-full') === null) {
+        parentElement.setAttribute('commit-message-full', parentElement.childNodes[1].title.substring(5));
+      }
+
+      parentElement.childNodes[3].innerHTML = e.target.getAttribute('aria-expanded') === 'true'
+        ? parentElement.getAttribute('commit-message-full')
+        : parentElement.getAttribute('commit-message-partial');
+    }
+  });
+}
 
 let loop = setInterval(() => {
   if (window.location.href.includes('/issues/')) {
